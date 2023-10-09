@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc --build",
     "open-html": "open-cli index.html",
-    "start:ex1": "npm run build && npm run open-html"
+    "ex1": "npm run open-html",
+    "start": "npm run build && npm run ex1"
   },
   "keywords": [],
   "author": "",

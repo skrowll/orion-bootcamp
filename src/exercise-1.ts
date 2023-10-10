@@ -19,6 +19,12 @@
 function countVowels(word: string): number{
   word = word.toLowerCase();
   const vowels = ['a', 'e', 'i', 'o', 'u'];
+  const accentedVowelA = ['á', 'à', 'ã', 'â', 'ä'];
+  const accentedVowelE = ['é', 'è', 'ẽ', 'ê', 'ë'];
+  const accentedVowelI = ['í', 'ì', 'ĩ', 'î', 'ï'];
+  const accentedVowelO = ['ó', 'ò', 'õ', 'ô', 'ö'];
+  const accentedVowelU = ['ú', 'ù', 'ũ', 'û', 'ü'];
+  vowels.push(...accentedVowelA, ...accentedVowelE, ...accentedVowelI, ...accentedVowelO, ...accentedVowelU);
   let sumResult = 0;
 
   if (word === '') {

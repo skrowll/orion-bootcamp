@@ -40,7 +40,31 @@ function findBioByIdImperative(id: number): string {
       return lista[index].bio;
     }
   }
-  return "Id não encontrado";
+  return 'Id não encontrado';
 }
 
 console.log(findBioByIdImperative(2));
+
+// Exercício 2 - Item b) Função que retorne o name do id passado.
+
+// Functional Paradigm
+
+function findNameByIdFunctional(id: number): string {
+  const person = lista.find((person) => person.id === id);
+  return person ? person.name : 'Id não encontrado';
+};
+
+console.log(findNameByIdFunctional(1));
+
+// Imperative Paradigm
+
+function findNameByIdImperative(id: number): string {
+  for (let index = 0; index < lista.length; index += 1) {
+    if (lista[index].id === id) {
+      return lista[index].name;
+    }
+  }
+  return 'Id não encontrado';
+}
+
+console.log(findNameByIdImperative(1));

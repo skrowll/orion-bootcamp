@@ -7,6 +7,7 @@
     "build": "tsc --build",
     "open-html": "open-cli index.html",
     "ex1": "npm run open-html",
+    "ex2": "npm run build && node dist/exercise-2.js",
     "start": "npm run build && npm run ex1"
   },
   "keywords": [],

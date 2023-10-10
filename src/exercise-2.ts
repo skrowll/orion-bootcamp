@@ -23,9 +23,24 @@ let lista = [
 
 // Exercício 2 - Item a) Função que retorne a bio do id passado.
 
-function findBioById(id: number): string {
+// Functional Paradigm
+
+function findBioByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.bio : 'Id não encontrado';
 };
 
-console.log(findBioById(2));
+console.log(findBioByIdFunctional(2));
+
+// Imperative Paradigm
+
+function findBioByIdImperative(id: number): string {
+  for (let index = 0; index < lista.length; index += 1) {
+    if (lista[index].id === id) {
+      return lista[index].bio;
+    }
+  }
+  return "Id não encontrado";
+}
+
+console.log(findBioByIdImperative(2));

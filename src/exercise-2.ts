@@ -15,14 +15,19 @@ let lista: IPerson[] = readData();
 
 // Exercício 2 - Item a) Função que retorne a bio do id passado.
 
+/**
+ * Retorna a bio do objeto com o ID correspondente.
+*
+* @param id - O ID do objeto a ser procurado.
+* @returns A bio do objeto ou uma mensagem de erro se o ID não for encontrado.
+*/
+
 // Functional Paradigm
 
 function getBioByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.bio : 'Id não encontrado';
 };
-
-// console.log(getBioByIdFunctional(2));
 
 // Imperative Paradigm
 
@@ -35,9 +40,14 @@ function getBioByIdImperative(id: number): string {
   return 'Id não encontrado';
 };
 
-// console.log(getBioByIdImperative(2));
-
 // Exercício 2 - Item b) Função que retorne o name do id passado.
+
+/**
+ * Retorna o nome do objeto com o ID correspondente.
+ *
+ * @param id - O ID do objeto a ser procurado.
+ * @returns O nome do objeto ou uma mensagem de erro se o ID não for encontrado.
+ */
 
 // Functional Paradigm
 
@@ -45,8 +55,6 @@ function getNameByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.name : 'Id não encontrado';
 };
-
-// console.log(getNameByIdFunctional(1));
 
 // Imperative Paradigm
 
@@ -59,9 +67,14 @@ function getNameByIdImperative(id: number): string {
   return 'Id não encontrado';
 }
 
-// console.log(getNameByIdImperative(1));
-
 // Exercício 2 - Item c) Função que apague um item da lista a partir de um id passado
+
+/**
+ * Deleta o objeto com o ID correspondente da lista.
+ *
+ * @param id - O ID do objeto a ser deletado.
+ * @returns Uma mensagem de sucesso ou erro.
+ */
 
 // Functional Paradigm
 
@@ -75,8 +88,6 @@ function deleteByIdFunctional(id: number): string {
   };
   return 'Não foi possivel deletar o dado com o id informado';
 };
-
-// console.log(deleteByIdFunctional(5));
 
 // Imperative Paradigm
 
@@ -99,11 +110,18 @@ function deleteByIdImperative(id: number): string {
     return 'Dado deletado com sucesso';
   }
   return 'Não foi possivel deletar o dado com o id informado';
-}
-
-// console.log(deleteByIdImperative(1));
+};
 
 // Exercício 2 - Item d) Função que altere a bio ou o name a partir de um id passado
+
+/**
+ * Atualiza o objeto com o ID correspondente com novos valores.
+ *
+ * @param id - O ID do objeto a ser atualizado.
+ * @param name - O novo nome a ser atribuído ao objeto.
+ * @param bio - A nova bio a ser atribuída ao objeto.
+ * @returns Uma mensagem de sucesso ou erro.
+ */
 
 // Functional Paradigm
 
@@ -125,8 +143,6 @@ function updateByIdFunctional(id: number, name: string, bio: string): string {
   };
   return 'Não foi possivel atualizar o dado com o id informado';
 };
-
-// console.log(updateByIdFunctional(3, 'Lucas Rocha', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida, nunc sed mollis cursus, ex nisl placerat nunc, vitae egestas sapien ante nec ipsum.'));
 
 // Imperative Paradigm
 
@@ -153,6 +169,4 @@ function updateByIdImperative(id: number, name: string, bio: string): string {
     return 'Dado atualizado com sucesso';
   }
   return 'Não foi possivel atualizar o dado com o id informado';
-}
-
-// console.log(updateByIdImperative(3, 'Lucas Rocha', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida, nunc sed mollis cursus, ex nisl placerat nunc, vitae egestas sapien ante nec ipsum.'));
+};

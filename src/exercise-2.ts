@@ -1,64 +1,56 @@
-let lista = [
-  {
-    "id" : 1,
-    "name": "Ada Lovelace",
-    "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"
-  },
-  {
-    "id" : 2,
-    "name": "Alan Turing",
-    "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial"
-  },
-  {
-    "id" : 3,
-    "name": "Nikola Tesla",
-    "bio" : "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada."
-  },
-  {
-    "id" : 4,
-    "name": "Nicolau Copérnico",
-    "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."
-  }
-];
+import * as fs from "fs";
+import IPerson from "./interfaces/IPerson.inteface";
+
+function readData() {
+  const data = fs.readFileSync('src/database/database.json');
+  return JSON.parse(data.toString());
+};
+
+function writeData(data: IPerson[]) {
+  const jsonData = JSON.stringify(data);
+  fs.writeFileSync('src/database/database.json', jsonData);
+};
+
+let lista: IPerson[] = readData();
 
 // Exercício 2 - Item a) Função que retorne a bio do id passado.
 
 // Functional Paradigm
 
-function findBioByIdFunctional(id: number): string {
+function getBioByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.bio : 'Id não encontrado';
 };
 
-console.log(findBioByIdFunctional(2));
+// console.log(getBioByIdFunctional(2));
 
 // Imperative Paradigm
 
-function findBioByIdImperative(id: number): string {
+function getBioByIdImperative(id: number): string {
   for (let index = 0; index < lista.length; index += 1) {
     if (lista[index].id === id) {
       return lista[index].bio;
     }
   }
   return 'Id não encontrado';
-}
+};
 
-console.log(findBioByIdImperative(2));
+// console.log(getBioByIdImperative(2));
 
 // Exercício 2 - Item b) Função que retorne o name do id passado.
 
 // Functional Paradigm
 
-function findNameByIdFunctional(id: number): string {
+function getNameByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.name : 'Id não encontrado';
 };
 
-console.log(findNameByIdFunctional(1));
+// console.log(getNameByIdFunctional(1));
 
 // Imperative Paradigm
 
-function findNameByIdImperative(id: number): string {
+function getNameByIdImperative(id: number): string {
   for (let index = 0; index < lista.length; index += 1) {
     if (lista[index].id === id) {
       return lista[index].name;
@@ -67,4 +59,45 @@ function findNameByIdImperative(id: number): string {
   return 'Id não encontrado';
 }
 
-console.log(findNameByIdImperative(1));
+// console.log(getNameByIdImperative(1));
+
+// Exercício 2 - Item c) Função que apague um item da lista a partir de um id passado
+
+// Functional Paradigm
+
+function deleteByIdFunctional(id: number): number {
+  const person = lista.find((person) => person.id === id);
+  if (person) {
+    const newLista = lista.filter((person) => person.id !== id)
+    lista = newLista;
+    // writeData(newLista)
+    return 1;
+  };
+  return 0;
+};
+
+// console.log(deleteByIdFunctional(5));
+
+// Imperative Paradigm
+
+function deleteByIdImperative(id: number): number {
+  let person = [];
+  let newLista = [];
+  for (let index = 0; index < lista.length; index += 1) {
+    if (lista[index].id === id) {
+      person.push(lista[index]);
+    }
+  }
+  if (person.length > 0) {
+    for (let index = 0; index < lista.length; index += 1) {
+      if (lista[index].id !== id) {
+        newLista.push(lista[index]);
+      }
+    }
+    lista = newLista;
+    return 1;
+  }
+  return 0;
+}
+
+// console.log(deleteByIdImperative(1));

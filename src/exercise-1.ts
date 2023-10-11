@@ -7,8 +7,8 @@
  * Esta função conta o número de vogais [a, e, i, o, u] em uma palavra e o retorna.
  * Se a string estiver vazia, a função retorna 0 e exibe uma mensagem informando.
  * 
- * @param {string} word - A palavra da qual você deseja contar as vogais.
- * @returns {number} - O número de vogais na palavra.
+ * @param word - A palavra da qual você deseja contar as vogais.
+ * @returns - O número de vogais na palavra.
  *
  * @example
  * const palavra = "Orion";

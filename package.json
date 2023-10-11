@@ -1,0 +1,22 @@
+{
+  "name": "orion-bootcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "open-html": "open-cli index.html",
+    "ex1": "npm run open-html",
+    "start": "npm run build && npm run ex1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "open-cli": "7.2.0",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "tsx": "3.13.0"
+  }
+}

@@ -63,6 +63,12 @@ jobs:
       - name: Copy compiled files to root
         run: cp -r dist/* .
 
+      - name: List files in dist after copy
+        run: ls -l dist
+
+      - name: List files in root
+        run: ls -l
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

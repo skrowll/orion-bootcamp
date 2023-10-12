@@ -6,9 +6,9 @@ name: DEPLOY
 on:
   # Triggers the workflow on push or pull request events but only for the "develop" branch
   push:
-    branches: [ "gh-pages" ]
-  pull_request:
-    branches: [ "gh-pages" ]
+    branches: [ "feature/exercicio-3" ]
+  # pull_request:
+  #   branches: [ "gh-pages" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -66,7 +66,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          git checkout --orphan ''
+          git checkout --orphan 'gh-pages'
           rm -rf *
           git add -A
           git commit -m "GitHub Pages deploy"

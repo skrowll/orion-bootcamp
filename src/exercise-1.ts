@@ -28,7 +28,6 @@ function countVowels(word: string): number{
   let sumResult = 0;
 
   if (word === '') {
-    console.log('A string passada como parâmetro está vazia');
     return 0;
   }
   
@@ -38,25 +37,24 @@ function countVowels(word: string): number{
     }    
   }
 
-  console.log(`A palavra '${word}' contém ${sumResult} vogais`);
   return sumResult;
 };
 
-countVowels('Orion Bootcamp');
-
 // Exercício 1 - Item b) Função que retorne a quantidade de vogais da palavra passada via input no formulário.
 
-const input = document.querySelector('#input') as HTMLInputElement;
-const button = document.querySelector('#button') as HTMLButtonElement;
-const result = document.querySelector('#result') as HTMLParagraphElement;
+const wordInput = document.querySelector('#word-input') as HTMLInputElement;
+const countButton = document.querySelector('#count-button') as HTMLButtonElement;
+const result = document.querySelector('#vowel-count') as HTMLParagraphElement;
+const formVowelCounter = document.querySelector('#vowel-counter') as HTMLFormElement;
 
-button.onclick = () => {
+formVowelCounter.onsubmit = (event: SubmitEvent) => {
+  event.preventDefault();
   result.innerText = '';
-  if (input.value === '') {
-    result.innerText = `Digite uma palavra`;
+  if (wordInput.value === '') {
+    result.innerText = 'Digite uma palavra';
   } else {
-    const sumResult = countVowels((input.value).toString());
-    result.innerText = `A palavra '${input.value}' contém ${sumResult} vogais`;
+    const sumResult = countVowels((wordInput.value).toString());
+    result.innerText = `A palavra '${wordInput.value}' contém ${sumResult} vogais`;
   }
-  input.value = '';
-}
+  wordInput.value = '';
+};

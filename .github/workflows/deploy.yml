@@ -50,13 +50,25 @@ jobs:
           path: '.'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
       - name: Install dependencies
         run: npm install
 
       - name: Build
         run: npm run build
+
+      - name: Teste
+        run: |
+          git checkout --orphan gh-pages
+          git --set-upstream-to=origin/gh-pages
+          rm -rf *
+          cp -r dist/* .
+          git add -A
+          git commit -m "GitHub Pages deploy"
+          git push origin gh-pages --force
 
       - name: Deploy to GitHub Pages
         id: deployment

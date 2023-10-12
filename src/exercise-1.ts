@@ -7,8 +7,8 @@
  * Esta função conta o número de vogais [a, e, i, o, u] em uma palavra e o retorna.
  * Se a string estiver vazia, a função retorna 0 e exibe uma mensagem informando.
  * 
- * @param {string} word - A palavra da qual você deseja contar as vogais.
- * @returns {number} - O número de vogais na palavra.
+ * @param word - A palavra da qual você deseja contar as vogais.
+ * @returns - O número de vogais na palavra.
  *
  * @example
  * const palavra = "Orion";
@@ -17,7 +17,7 @@
  */
 
 function countVowels(word: string): number{
-  word = word.toLowerCase();
+  const wordLowerCase = word.toLowerCase();
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   const accentedVowelA = ['á', 'à', 'ã', 'â', 'ä'];
   const accentedVowelE = ['é', 'è', 'ẽ', 'ê', 'ë'];
@@ -32,7 +32,7 @@ function countVowels(word: string): number{
     return 0;
   }
   
-  for (const letter of word) {
+  for (const letter of wordLowerCase) {
     if (vowels.includes(letter)) {    
       sumResult += 1;
     }    

@@ -12,18 +12,14 @@ const deleteIdInput = document.querySelector('#delete-id') as HTMLInputElement;
 const deleteButton = document.querySelector('#delete-button') as HTMLButtonElement;
 
 searchBioButton?.addEventListener('click', () => {
-  console.log('clicou');
   if (searchBioInput.value) {
-    console.log(searchBioInput.value);
     const result = getBioByIdFunctional(Number(searchBioInput.value));
     console.log(result);    
   }
 });
 
 searchNameButton?.addEventListener('click', () => {
-  console.log('clicou');
   if (searchNameInput.value) {
-    console.log(searchNameInput.value);
     const result = getNameByIdFunctional(Number(searchNameInput.value));
     console.log(result);    
   }
@@ -61,9 +57,7 @@ deleteIdInput?.addEventListener('change', () => {
   }  
 })
 
-deleteButton?.addEventListener('click', () => {
-  console.log('clicou');
-  
+deleteButton?.addEventListener('click', () => {  
   if (deleteIdInput.value) {
     const result = deleteByIdFunctional(Number(deleteIdInput.value));
     console.log(result);  

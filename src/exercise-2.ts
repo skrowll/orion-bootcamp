@@ -1,27 +1,27 @@
-import * as fs from "fs";
 import IPerson from "./interfaces/IPerson.inteface";
 
-/**
- * Lê os dados do arquivo JSON e os converte em uma lista de objetos do tipo IPerson.
- *
- * @returns Uma lista de objetos do tipo IPerson.
- */
-function readData(): IPerson[] {
-  const data = fs.readFileSync("src/database/database.json");
-  return JSON.parse(data.toString());
-}
-
-/**
- * Escreve os dados fornecidos no arquivo JSON.
- *
- * @param data - Uma lista de objetos do tipo IPerson a ser escrita no arquivo JSON.
- */
-function writeData(data: IPerson[]): void {
-  const jsonData = JSON.stringify(data);
-  fs.writeFileSync("src/database/database.json", jsonData);
-}
-
-let lista: IPerson[] = readData();
+let lista: IPerson[] = [
+  {
+    "id" : 1,
+    "name": "Ada Lovelace",
+    "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"
+  },
+  {
+    "id" : 2,
+    "name": "Alan Turing",
+    "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial"
+  },
+  {
+    "id" : 3,
+    "name": "Nikola Tesla",
+    "bio" : "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada."
+  },
+  {
+    "id" : 4,
+    "name": "Nicolau Copérnico",
+    "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."
+  }
+]
 
 // Exercício 2 - Item a) Função que retorne a bio do id passado.
 
@@ -31,7 +31,7 @@ let lista: IPerson[] = readData();
  * @param id - O ID do objeto a ser procurado.
  * @returns A bio do objeto ou uma mensagem de erro se o ID não for encontrado.
  */
-function getBioByIdFunctional(id: number): string {
+export function getBioByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.bio : "Id não encontrado";
 }
@@ -59,7 +59,7 @@ function getBioByIdImperative(id: number): string {
  * @param id - O ID do objeto a ser procurado.
  * @returns O nome do objeto ou uma mensagem de erro se o ID não for encontrado.
  */
-function getNameByIdFunctional(id: number): string {
+export function getNameByIdFunctional(id: number): string {
   const person = lista.find((person) => person.id === id);
   return person ? person.name : "Id não encontrado";
 }
@@ -85,15 +85,15 @@ function getNameByIdImperative(id: number): string {
  * Deleta o objeto com o ID correspondente da lista.
  *
  * @param id - O ID do objeto a ser deletado.
- * @returns Uma mensagem de sucesso ou erro.
+ * @returns Uma nova lista sem o item excluído ou uma mensagem de erro.
  */
-function deleteByIdFunctional(id: number): string {
+export function deleteByIdFunctional(id: number): string | IPerson[] {
   const person = lista.find((person) => person.id === id);
   if (person) {
     const newLista = lista.filter((person) => person.id !== id);
     lista = newLista;
     // writeData(newLista)
-    return "Dado deletado com sucesso";
+    return lista;
   }
   return "Não foi possivel deletar o dado com o id informado";
 }
@@ -102,9 +102,9 @@ function deleteByIdFunctional(id: number): string {
  * Deleta o objeto com o ID correspondente da lista.
  *
  * @param id - O ID do objeto a ser deletado.
- * @returns Uma mensagem de sucesso ou erro.
+ * @returns Uma nova lista sem o item excluído ou uma mensagem de erro.
  */
-function deleteByIdImperative(id: number): string {
+function deleteByIdImperative(id: number): string | IPerson[] {
   let person = [];
   let newLista = [];
   for (let index = 0; index < lista.length; index += 1) {
@@ -120,7 +120,7 @@ function deleteByIdImperative(id: number): string {
     }
     lista = newLista;
     // writeData(newLista)
-    return "Dado deletado com sucesso";
+    return lista;
   }
   return "Não foi possivel deletar o dado com o id informado";
 }
@@ -133,9 +133,9 @@ function deleteByIdImperative(id: number): string {
  * @param id - O ID do objeto a ser atualizado.
  * @param name - O novo nome a ser atribuído ao objeto.
  * @param bio - A nova bio a ser atribuída ao objeto.
- * @returns Uma mensagem de sucesso ou erro.
+ * @returns O objeto do item atualizado ou uma mensagem de erro.
  */
-function updateByIdFunctional(id: number, name: string, bio: string): string {
+export function updateByIdFunctional(id: number, name: string, bio: string): string | IPerson {
   if (!id || id < 1 || !name || name === "" || !bio || bio === "") {
     return "Todos os parâmetros devem ser preenchidos corretamente";
   }
@@ -149,7 +149,7 @@ function updateByIdFunctional(id: number, name: string, bio: string): string {
     });
     lista = newLista;
     // writeData(newLista)
-    return "Dado atualizado com sucesso";
+    return lista[id - 1];
   }
   return "Não foi possivel atualizar o dado com o id informado";
 }
@@ -160,9 +160,9 @@ function updateByIdFunctional(id: number, name: string, bio: string): string {
  * @param id - O ID do objeto a ser atualizado.
  * @param name - O novo nome a ser atribuído ao objeto.
  * @param bio - A nova bio a ser atribuída ao objeto.
- * @returns Uma mensagem de sucesso ou erro.
+ * @returns O objeto do item atualizado ou uma mensagem de erro.
  */
-function updateByIdImperative(id: number, name: string, bio: string): string {
+function updateByIdImperative(id: number, name: string, bio: string): string | IPerson {
   if (!id || id < 1 || !name || name === "" || !bio || bio === "") {
     return "Todos os parâmetros devem ser preenchidos corretamente";
   }
@@ -182,7 +182,7 @@ function updateByIdImperative(id: number, name: string, bio: string): string {
       }
     }
     lista = newLista;
-    return "Dado atualizado com sucesso";
+    return lista[id -1];
   }
   return "Não foi possivel atualizar o dado com o id informado";
 }

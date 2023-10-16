@@ -1,75 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orion Bootcamp - Exercícios</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orion Bootcamp - Exercícios</title>
 
-  <h1>Exercício 1</h1>
+    <script src="./dist/exercise-1.js" defer></script>
+    <script type="module" src="./dist/exercise-3.js" defer></script>
+  </head>
+  <body>
+    <h1>Exercício 1</h1>
 
-  <form id="vowel-counter">
+    <form id="vowel-counter">
       <label for="word-input">Digite uma palavra:</label>
-      <input type="text" id="word-input" name="word-input">
+      <input type="text" id="word-input" name="word-input" />
       <button type="submit" id="count-button">Contar Vogais</button>
       <p id="vowel-count"></p>
-  </form>
+    </form>
 
-  <h1>Exercício 2</h1>
+    <h1>Exercício 2</h1>
 
-  <form id="options-form">
+    <form id="options-form">
       <label for="action">Selecione uma ação:</label>
       <select id="action" name="action">
-          <option value="select" disabled selected>--selecione--</option>
-          <option value="search-bio">Pesquisar Bio</option>
-          <option value="search-name">Pesquisar Nome</option>
-          <option value="update-data">Alterar Dados</option>
-          <option value="delete-data">Excluir Dados</option>
+        <option value="select" disabled selected>--selecione--</option>
+        <option value="search-bio">Pesquisar Bio</option>
+        <option value="search-name">Pesquisar Nome</option>
+        <option value="update-data">Alterar Dados</option>
+        <option value="delete-data">Excluir Dados</option>
       </select>
 
-      <div id="search-bio-form" style="display: none;">
-          <label for="search-bio">ID do Registro:</label>
-          <input type="number" id="search-bio" name="search-bio">
-          <button type="button">Pesquisar Bio</button>
+      <div id="search-bio-form" style="display: none">
+        <label for="search-bio">ID do Registro:</label>
+        <input type="number" id="search-bio" name="search-bio" />
+        <button id="search-bio-button" type="button">Pesquisar Bio</button>
       </div>
 
-      <div id="search-name-form" style="display: none;">
-          <label for="search-name">ID do Registro:</label>
-          <input type="number" id="search-name" name="search-name">
-          <button type="button">Pesquisar Nome</button>
+      <div id="search-name-form" style="display: none">
+        <label for="search-name">ID do Registro:</label>
+        <input type="number" id="search-name" name="search-name" />
+        <button id="search-name-button" type="button">Pesquisar Nome</button>
       </div>
 
-      <div id="update-data-form" style="display: none;">
-          <label for="update-id">ID do Registro:</label>
-          <input type="number" id="update-id" name="update-id">
-          <label for="update-field">Nome:</label>
-          <input type="text" id="update-field" name="update-field">
-          <label for="update-value">Bio:</label>
-          <input type="text" id="update-value" name="update-value">
-          <button type="button">Alterar Dados</button>
+      <div id="update-data-form" style="display: none">
+        <label for="update-id">ID do Registro:</label>
+        <input type="number" id="update-id" name="update-id" />
+        <label for="update-name">Nome:</label>
+        <input type="text" id="update-name" name="update-name" />
+        <label for="update-bio">Bio:</label>
+        <input type="text" id="update-bio" name="update-bio" />
+        <button id="update-button" type="button" disabled>Alterar Dados</button>
       </div>
 
-      <div id="delete-data-form" style="display: none;">
-          <label for="delete-id">ID do Registro:</label>
-          <input type="number" id="delete-id" name="delete-id">
-          <button type="button">Excluir Dados</button>
+      <div id="delete-data-form" style="display: none">
+        <label for="delete-id">ID do Registro:</label>
+        <input type="number" id="delete-id" name="delete-id" />
+        <button id="delete-button" type="button" disabled>Excluir Dados</button>
       </div>
-  </form>
-  <script src="./dist/exercise-1.js" defer></script>
-  <script>
-     function showForm(formId) {
-            const forms = ["search-bio-form", "search-name-form", "update-data-form", "delete-data-form"];
-            forms.forEach(form => {
-                document.getElementById(form).style.display = "none";
-            });
-            document.getElementById(formId).style.display = "block";
-        }
-
-        document.getElementById("action").addEventListener("change", function() {
-            showForm(this.value + "-form");
+    </form>
+    <script>
+      function showForm(formId) {
+        const forms = [
+          "search-bio-form",
+          "search-name-form",
+          "update-data-form",
+          "delete-data-form",
+        ];
+        forms.forEach((form) => {
+          document.getElementById(form).style.display = "none";
         });
-  </script>
-  <!-- <script src="./dist/exercise-2.js" defer></script> -->
-</body>
+        document.getElementById(formId).style.display = "block";
+      }
+
+      document.getElementById("action").addEventListener("change", function () {
+        showForm(this.value + "-form");
+      });
+    </script>
+  </body>
 </html>

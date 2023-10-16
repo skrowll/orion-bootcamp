@@ -68,7 +68,7 @@ function deleteByIdImperative(id) {
             }
         }
         lista = newLista;
-        return "Dado deletado com sucesso";
+        return lista;
     }
     return "Não foi possivel deletar o dado com o id informado";
 }
@@ -110,7 +110,7 @@ function updateByIdImperative(id, name, bio) {
             }
         }
         lista = newLista;
-        return "Dado atualizado com sucesso";
+        return lista[id - 1];
     }
     return "Não foi possivel atualizar o dado com o id informado";
 }

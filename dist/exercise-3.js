@@ -10,17 +10,13 @@ const updateButton = document.querySelector('#update-button');
 const deleteIdInput = document.querySelector('#delete-id');
 const deleteButton = document.querySelector('#delete-button');
 searchBioButton === null || searchBioButton === void 0 ? void 0 : searchBioButton.addEventListener('click', () => {
-    console.log('clicou');
     if (searchBioInput.value) {
-        console.log(searchBioInput.value);
         const result = getBioByIdFunctional(Number(searchBioInput.value));
         console.log(result);
     }
 });
 searchNameButton === null || searchNameButton === void 0 ? void 0 : searchNameButton.addEventListener('click', () => {
-    console.log('clicou');
     if (searchNameInput.value) {
-        console.log(searchNameInput.value);
         const result = getNameByIdFunctional(Number(searchNameInput.value));
         console.log(result);
     }
@@ -56,7 +52,6 @@ deleteIdInput === null || deleteIdInput === void 0 ? void 0 : deleteIdInput.addE
     }
 });
 deleteButton === null || deleteButton === void 0 ? void 0 : deleteButton.addEventListener('click', () => {
-    console.log('clicou');
     if (deleteIdInput.value) {
         const result = deleteByIdFunctional(Number(deleteIdInput.value));
         console.log(result);

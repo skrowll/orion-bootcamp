@@ -1,20 +1,4 @@
 "use strict";
-// Exercício 1 - Item a) Função que retorne a quantidade de vogais da palavra passada via parâmetro da função.
-/**
- * Conta o número de vogais em uma palavra.
- *
- * @remarks
- * Esta função conta o número de vogais [a, e, i, o, u] em uma palavra e o retorna.
- * Se a string estiver vazia, a função retorna 0 e exibe uma mensagem informando.
- *
- * @param word - A palavra da qual você deseja contar as vogais.
- * @returns - O número de vogais na palavra.
- *
- * @example
- * const palavra = "Orion";
- * const quantidadeVogais = countVowels(palavra);
- * O resultado será 3.
- */
 function countVowels(word) {
     const wordLowerCase = word.toLowerCase();
     const vowels = ['a', 'e', 'i', 'o', 'u'];
@@ -36,7 +20,6 @@ function countVowels(word) {
     return sumResult;
 }
 ;
-// Exercício 1 - Item b) Função que retorne a quantidade de vogais da palavra passada via input no formulário.
 const wordInput = document.querySelector('#word-input');
 const countButton = document.querySelector('#count-button');
 const result = document.querySelector('#vowel-count');

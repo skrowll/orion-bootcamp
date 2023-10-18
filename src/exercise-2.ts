@@ -92,7 +92,6 @@ export function deleteByIdFunctional(id: number): string | IPerson[] {
   if (person) {
     const newLista = lista.filter((person) => person.id !== id);
     lista = newLista;
-    // writeData(newLista)
     return lista;
   }
   return "Não foi possivel deletar o dado com o id informado";
@@ -119,7 +118,6 @@ function deleteByIdImperative(id: number): string | IPerson[] {
       }
     }
     lista = newLista;
-    // writeData(newLista)
     return lista;
   }
   return "Não foi possivel deletar o dado com o id informado";
@@ -148,7 +146,6 @@ export function updateByIdFunctional(id: number, name: string, bio: string): str
       return person;
     });
     lista = newLista;
-    // writeData(newLista)
     return lista[id - 1];
   }
   return "Não foi possivel atualizar o dado com o id informado";
